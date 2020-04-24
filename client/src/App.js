@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 // Redux
 import { Provider } from "react-redux";
@@ -32,9 +34,10 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/home' component={Home} />
-            <Route exact path='/search' component={Search} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path='/search' component={Search} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </>
       </Router>
