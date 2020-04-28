@@ -35,7 +35,16 @@ router.post("/", auth, async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { fishpersonality, bio, location } = req.body;
+  const {
+    fishpersonality,
+    bio,
+    location,
+    youtube,
+    facebook,
+    twitter,
+    instagram,
+    linkedin,
+  } = req.body;
 
   // build profile fields
   const profileFields = {};
@@ -44,6 +53,14 @@ router.post("/", auth, async (req, res) => {
   if (location) profileFields.location = location;
   if (bio) profileFields.bio = bio;
   if (fishpersonality) profileFields.fishpersonality = fishpersonality;
+
+  // build social object
+  profileFields.social = {};
+  if (youtube) profileFields.social.youtube = youtube;
+  if (twitter) profileFields.social.twitter = twitter;
+  if (facebook) profileFields.social.facebook = facebook;
+  if (linkedin) profileFields.social.linkedin = linkedin;
+  if (instagram) profileFields.social.instagram = instagram;
 
   try {
     let profile = await Profile.findOne({ user: req.user.id });

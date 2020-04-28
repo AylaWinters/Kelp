@@ -23,7 +23,13 @@ const Dashboard = ({
         <i className='fas fa-user'></i> Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <> </>
+        <>
+          <div class='dash-buttons'>
+            <Link to='/edit-profile' class='btn btn-light'>
+              <i class='fas fa-user-circle text-primary'></i> Edit Profile
+            </Link>
+          </div>
+        </>
       ) : (
         <>
           <Link to='/create-profile' className='btn btn-primary my-1'>
