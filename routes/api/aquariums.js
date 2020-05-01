@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 
-const Post = require("../../models/Post");
+const Aquarium = require("../../models/Aquarium");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
@@ -22,16 +22,16 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select("-password");
 
-      const newPost = new Post({
+      const newAquarium = new Aquarium({
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
       });
 
-      const post = await newPost.save();
+      const aquarium = await newAquarium.save();
 
-      res.json(post);
+      res.json(aquarium);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
@@ -44,8 +44,8 @@ router.post(
 // @access  Private
 router.get("/", auth, async (req, res) => {
   try {
-    const posts = await Post.find().sort({ date: -1 });
-    res.json(posts);
+    const aquarium = await Aquarium.find().sort({ date: -1 });
+    res.json(aquarium);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -57,15 +57,15 @@ router.get("/", auth, async (req, res) => {
 // @access  Private
 router.get("/:id", auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const aquarium = await Aquarium.findById(req.params.id);
 
-    if (!post) {
-      return res.status(404).json({ msg: "Post not found" });
+    if (!aquarium) {
+      return res.status(404).json({ msg: "Aquarium not found" });
     }
-    res.json(post);
+    res.json(aquarium);
   } catch (err) {
     if (err.kind === "ObjectId") {
-      return res.status(404).json({ msg: "Post not found" });
+      return res.status(404).json({ msg: "Aquarium not found" });
     }
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -77,23 +77,23 @@ router.get("/:id", auth, async (req, res) => {
 // @access  Private
 router.delete("/:id", auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const aquarium = await Aquarium.findById(req.params.id);
 
-    // check for post
-    if (!post) {
-      return res.status(404).json({ msg: "Post not found" });
+    // check for aquarium
+    if (!aquarium) {
+      return res.status(404).json({ msg: "aquarium not found" });
     }
     // check user
-    if (post.user.toString() !== req.user.id) {
+    if (aquarium.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    await post.remove();
+    await aquarium.remove();
 
-    res.json({ msg: "Post removed" });
+    res.json({ msg: "Aquarium removed" });
   } catch (err) {
     if (err.kind === "ObjectId") {
-      return res.status(404).json({ msg: "Post not found" });
+      return res.status(404).json({ msg: "Aquarium not found" });
     }
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -101,25 +101,25 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 // @route   PUT api/posts/like/:id
-// @desc    Like a post
+// @desc    Like an Aquarium
 // @access  Private
 router.put("/like/:id", auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const aquarium = await Aquarium.findById(req.params.id);
 
-    // check if post has already been liked
+    // check if aquarium has already been liked
     if (
-      post.likes.filter((like) => like.user.toString() === req.user.id).length >
-      0
+      aquarium.likes.filter((like) => like.user.toString() === req.user.id)
+        .length > 0
     ) {
-      return res.status(400).json({ msg: "Post already liked" });
+      return res.status(400).json({ msg: "Aquarium already liked" });
     }
 
-    post.likes.unshift({ user: req.user.id });
+    aquarium.likes.unshift({ user: req.user.id });
 
-    await post.save();
+    await aquarium.save();
 
-    res.json(post.likes);
+    res.json(aquarium.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -131,26 +131,26 @@ router.put("/like/:id", auth, async (req, res) => {
 // @access  Private
 router.put("/unlike/:id", auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const aquarium = await Aquarium.findById(req.params.id);
 
-    // check if post has already been liked
+    // check if aquarium has already been liked
     if (
-      post.likes.filter((like) => like.user.toString() === req.user.id)
+      aquarium.likes.filter((like) => like.user.toString() === req.user.id)
         .length === 0
     ) {
-      return res.status(400).json({ msg: "Post has not been liked" });
+      return res.status(400).json({ msg: "Aquaruim has not been liked" });
     }
 
     //get remove index
-    const removeIndex = post.likes
+    const removeIndex = aquarium.likes
       .map((like) => like.user.toString())
       .indexOf(req.user.id);
 
-    post.likes.splice(removeIndex, 1);
+    aquarium.likes.splice(removeIndex, 1);
 
-    await post.save();
+    await aquarium.save();
 
-    res.json(post.likes);
+    res.json(aquarium.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -171,7 +171,7 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select("-password");
-      const post = await Post.findById(req.params.id);
+      const aquarium = await Aquarium.findById(req.params.id);
 
       const newComment = {
         text: req.body.text,
@@ -180,11 +180,11 @@ router.post(
         user: req.user.id,
       };
 
-      post.comments.unshift(newComment);
+      Aquarium.comments.unshift(newComment);
 
-      await post.save();
+      await aquarium.save();
 
-      res.json(post.comments);
+      res.json(aquarium.comments);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
@@ -197,10 +197,10 @@ router.post(
 // @access  Private
 router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const aquarium = await Aquarium.findById(req.params.id);
 
     // Pull out comment
-    const comment = post.comments.find(
+    const comment = aquarium.comments.find(
       (comment) => comment.id === req.params.comment_id
     );
 
@@ -215,15 +215,15 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     }
 
     //get remove index
-    const removeIndex = post.comments
+    const removeIndex = aquarium.comments
       .map((comment) => comment.user.toString())
       .indexOf(req.user.id);
 
-    post.comments.splice(removeIndex, 1);
+    aquarium.comments.splice(removeIndex, 1);
 
-    await post.save();
+    await aquarium.save();
 
-    res.json(post.comments);
+    res.json(aquarium.comments);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
