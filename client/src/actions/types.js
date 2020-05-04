@@ -12,3 +12,5 @@ export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const PROFILE_ERROR = "PROFILE_ERROR";
 export const GET_AQUARIUMS = "GET_AQUARIUMS";
 export const AQUARIUM_ERROR = "AQUARIUM_ERROR";
+export const UPDATE_LIKES = "UPDATE_LIKES";
+export const ADD_AQUARIUM = "ADD_AQUARIUM";

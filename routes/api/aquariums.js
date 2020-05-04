@@ -7,12 +7,12 @@ const Aquarium = require("../../models/Aquarium");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
-// @route   POST api/posts
+// @route   POST api/aquariums
 // @desc    create a post
 // @access  Private
 router.post(
   "/",
-  [auth, [check("text", "Text is required").not().isEmpty()]],
+  [auth, [check("name", "Name is required").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -23,10 +23,11 @@ router.post(
       const user = await User.findById(req.user.id).select("-password");
 
       const newAquarium = new Aquarium({
-        text: req.body.text,
-        name: user.name,
-        avatar: user.avatar,
         user: req.user.id,
+        description: req.body.description,
+        location: req.body.location,
+        name: req.body.name,
+        photo: req.body.photo,
       });
 
       const aquarium = await newAquarium.save();

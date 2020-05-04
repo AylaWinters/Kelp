@@ -6,20 +6,28 @@ import { logout } from "../actions/auth";
 
 function Navbar({ auth: { isAuthenticated, loading }, logout }) {
   const authLinks = (
-    <>
+    <span>
       <li>
         <Link to='/dashboard' className='nav-link'>
           <i className='fas fa-user'></i>{" "}
           <span className='hide-sm'>Dashboard</span>
         </Link>
       </li>
-      <li className='nav-item'>
+
+      <li>
+        <Link to='/aquariums' className='nav-link'>
+          <i className='fas fa-fish'></i>{" "}
+          <span className='hide-sm'>Aquariums</span>
+        </Link>
+      </li>
+
+      <li>
         <a className='nav-link' onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt'></i>{" "}
           <span className='hide-sm'>Logout</span>
         </a>
       </li>
-    </>
+    </span>
   );
 
   const guestLinks = (
@@ -29,6 +37,7 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
           Register
         </Link>
       </li>
+
       <li className='nav-item'>
         <Link className='nav-link' to='/login'>
           Login
@@ -39,36 +48,14 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 
   return (
     <div>
-      <nav className='navbar navbar-expand-sm '>
+      <nav className='navbar '>
         <Link className='navbar-brand' to='/'>
           <i className='fas fa-leaf'></i> Kelp
         </Link>
 
-        <div className=' navbar-collapse' id='navbarTogglerDemo02'>
-          <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
-            <li className='nav-item active'>
-              <Link className='nav-link' to='/Home'>
-                Home<span className='sr-only'>(current)</span>
-              </Link>
-            </li>
-            {!loading && (
-              <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-            )}
-          </ul>
-          <form className='form-inline my-2 my-lg-0'>
-            <input
-              className='form-control mr-sm-2'
-              type='search'
-              placeholder='Search Aquariums'
-            />
-            <button
-              className='btn btn-outline-light my-2 my-sm-0'
-              type='submit'
-            >
-              Search
-            </button>
-          </form>
-        </div>
+        {!loading && (
+          <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        )}
       </nav>
     </div>
   );

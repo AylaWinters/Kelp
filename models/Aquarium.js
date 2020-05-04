@@ -6,14 +6,17 @@ const AquariumSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
-  text: {
+  description: {
     type: String,
-    required: true,
+  },
+  location: {
+    type: String,
   },
   name: {
     type: String,
+    required: true,
   },
-  avatar: {
+  photo: {
     type: String,
   },
   likes: [

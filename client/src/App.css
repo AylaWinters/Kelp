@@ -33,9 +33,16 @@ ul {
   text-align: center;
 }
 .navbar {
+  list-style: none;
   background-color: var(--primary-color);
   color: white;
+  padding-left: 30px;
 }
+
+.navbar span {
+  display: inline-flex;
+}
+
 .carousel-item {
   height: 80%;
 }
@@ -309,4 +316,94 @@ button {
 
 .table th {
   background: var(--light-color);
+}
+
+.aqua-img {
+  width: 300px;
+  height: 250px;
+}
+.aquaItem {
+  min-width: 325px;
+  max-width: 325px;
+  text-align: center;
+  margin: 20px 20px;
+}
+.aqua-desc {
+  height: 100px;
+  overflow: hidden;
+}
+.aquariums {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Mobile Styles */
+@media (max-width: 700px) {
+  .container {
+    margin-top: 8rem;
+  }
+
+  .hide-sm {
+    display: none !important;
+  }
+
+  /* Text Styles */
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .large {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* Navbar */
+
+  /* Profiles Page */
+  .profile {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile ul {
+    display: none;
+  }
+
+  /* Profile Page */
+
+  .profile-top img,
+  .profile img {
+    width: 200px;
+    margin: auto;
+  }
+
+  .profile-grid {
+    grid-template-areas:
+      "top"
+      "about"
+      "exp"
+      "edu"
+      "github";
+  }
+
+  .profile-about .skills {
+    flex-direction: column;
+  }
+
+  .dash-buttons a {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .post {
+    grid-template-columns: 1fr;
+  }
+  .post a,
+  .post button {
+    padding: 0.3rem 0.4rem;
+  }
 }
