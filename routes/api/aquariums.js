@@ -181,7 +181,7 @@ router.post(
         user: req.user.id,
       };
 
-      Aquarium.comments.unshift(newComment);
+      aquarium.comments.unshift(newComment);
 
       await aquarium.save();
 

@@ -20,6 +20,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Aquarium from "./components/aquariums/Aquarium";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -50,6 +51,7 @@ const App = () => {
             />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
             <PrivateRoute exact path='/aquariums' component={Aquariums} />
+            <PrivateRoute exact path='/aquarium/:id' component={Aquarium} />
             <PrivateRoute exact path='/addaquarium' component={AquaForm} />
           </Switch>
         </>

@@ -1,8 +1,11 @@
 import {
   GET_AQUARIUMS,
+  GET_AQUARIUM,
   AQUARIUM_ERROR,
   UPDATE_LIKES,
   ADD_AQUARIUM,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from "../actions/types";
 
 const initialState = {
@@ -20,6 +23,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         aquariums: payload,
+        loading: false,
+      };
+    case GET_AQUARIUM:
+      return {
+        ...state,
+        aquarium: payload,
         loading: false,
       };
     case ADD_AQUARIUM:
@@ -42,7 +51,22 @@ export default function (state = initialState, action) {
         ),
         loading: false,
       };
-
+    case ADD_COMMENT:
+      return {
+        ...state,
+        aquarium: { ...state.aquarium, comments: payload },
+        loading: false,
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        aquarium: {
+          ...state.aquarium.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
+        loading: false,
+      };
     default:
       return state;
   }
