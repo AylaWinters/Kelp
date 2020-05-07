@@ -19,7 +19,6 @@ const AquaForm = ({ addAquarium, history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     addAquarium(formData, history);
   };
 
@@ -51,8 +50,9 @@ const AquaForm = ({ addAquarium, history }) => {
         </div>
         <div className='form-group'>
           <input
-            type='url'
-            placeholder='Link to Photo of Aquarium'
+            type='file'
+            accept='image/*,.pdf,.jpg'
+            // placeholder='Link to Photo of Aquarium'
             name='photo'
             value={photo}
             onChange={(e) => onChange(e)}

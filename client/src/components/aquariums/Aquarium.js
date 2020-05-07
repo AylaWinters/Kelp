@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Alert";
@@ -6,12 +6,9 @@ import { getAquarium } from "../../actions/aquariums";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 
-const Aquarium = ({
-  getAquarium,
-  aquariums: { aquarium, loading },
-  //   aquarium: { _id, description, name, photo, user, likes, comments, date },
-  match,
-}) => {
+const Aquarium = ({ getAquarium, aquariums: { aquarium, loading }, match }) => {
+  const [addComment, toggleAddComment] = useState(false);
+
   useEffect(() => {
     getAquarium(match.params.id);
   }, [getAquarium]);
@@ -19,11 +16,23 @@ const Aquarium = ({
     <Spinner />
   ) : (
     <div className='container'>
-      <img src={aquarium.photo} />
+      <img className='aquarium-photo' src={aquarium.photo} />
       <h2 className='text-primary'>{aquarium.name}</h2>
+      <h6 className='text-dark'>{aquarium.location}</h6>
       <p>{aquarium.description}</p>
       <hr />
-      <CommentForm aquaId={aquarium._id} />
+      <button
+        onClick={() => toggleAddComment(!addComment)}
+        className='btn btn-primary add-comment'
+      >
+        Add Review
+      </button>
+
+      {addComment && (
+        <div className='comment-modal'>
+          <CommentForm toggle={toggleAddComment} aquaId={aquarium._id} />
+        </div>
+      )}
       <div className='comments'>
         {aquarium.comments &&
           aquarium.comments.map((comment) => (

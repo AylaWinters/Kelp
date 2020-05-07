@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Highlights() {
   return (
     <div class='highlights container'>
       <div class='row'>
         <div class='col-sm center'>
           <i class='HLIcons fas fa-fish'></i>
-          <Link to='/search'>
+          <Link to='/aquariums'>
             <h3 class='HLTitle'>Rate an Aquarium</h3>
           </Link>
           <p class='HLText'>
@@ -18,7 +19,7 @@ function Highlights() {
         </div>
         <div class='col-sm center'>
           <i class='HLIcons fas fa-frog'></i>
-          <Link to='/search'>
+          <Link to='/aquariums'>
             <h3 class='HLTitle'>Discover an Aquarium</h3>
           </Link>
           <p class='HLText'>

@@ -14,21 +14,24 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className='container'>
-      <h1 className='large text-primary'>Aquariums</h1>
+    <>
+      <div className='container'>
+        <h1 className='large text-primary'>Aquariums</h1>
 
-      <div className=''>
-        <h4>Can't find your aquarium?</h4>
-        <Link className='btn btn-primary' to='/addaquarium'>
-          Add an Aquarium
-        </Link>
-        <div className='aquariums'>
-          {aquariums.map((aquarium) => (
-            <AquaItem key={aquarium._id} aquarium={aquarium} />
-          ))}
+        <div className=''>
+          <h4>Can't find your aquarium?</h4>
+          <Link className='btn btn-primary' to='/addaquarium'>
+            Add an Aquarium
+          </Link>
+          <br />
         </div>
       </div>
-    </div>
+      <div className='aquariums'>
+        {aquariums.map((aquarium) => (
+          <AquaItem key={aquarium._id} aquarium={aquarium} />
+        ))}
+      </div>
+    </>
   );
 };
 

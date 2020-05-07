@@ -7,8 +7,9 @@ import Spinner from "../layout/Spinner";
 
 const Dashboard = ({
   getCurrentProfile,
-  auth: { user },
+  auth: { user, id },
   profile: { profile, loading },
+  aquarium,
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -28,6 +29,13 @@ const Dashboard = ({
             <Link to='/edit-profile' class='btn btn-light'>
               <i class='fas fa-user-circle text-primary'></i> Edit Profile
             </Link>
+            <Link to={`/profile/${user._id}`} class='btn btn-light'>
+              <i class='fas fa-user-circle text-primary'></i> View Profile
+            </Link>
+            <br />
+            <Link to='/aquariums' class='view-aqua btn btn-primary'>
+              <i class='fas fa-fish'></i> View Aquariums
+            </Link>
           </div>
         </>
       ) : (
@@ -45,6 +53,7 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
+  aquarium: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

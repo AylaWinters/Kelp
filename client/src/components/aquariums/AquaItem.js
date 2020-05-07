@@ -11,10 +11,10 @@ const AquaItem = ({
   auth,
   aquarium: { _id, description, name, photo, user, likes, comments, date },
 }) => (
-  <div className='aquaItem bg-white p-1 my-1'>
+  <div className='aquaItem bg-white p-1'>
     <div>
-      <Link to={`/profile/${user}`}>
-        <img className='aqua-img' src={photo} alt='pic of user' />
+      <Link to={`/aquarium/${_id}`}>
+        <img className='aqua-img' src={photo} alt='Pic of aquarium' />
         <h4 className='text-primary'>{name}</h4>
       </Link>
     </div>

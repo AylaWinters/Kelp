@@ -352,15 +352,31 @@ button {
   margin-bottom: 0.5rem;
 }
 
+.view-aqua {
+  margin-top: 12px;
+  padding-left: 77px;
+  padding-right: 77px;
+}
+
 .aqua-img {
   width: 300px;
   height: 250px;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.aquarium-photo {
+  max-height: 350px;
+  border-radius: 20px;
 }
 .aquaItem {
   min-width: 325px;
   max-width: 325px;
+  min-height: 455px;
+  max-height: 455px;
   text-align: center;
-  margin: 20px 20px;
+  margin: 20px;
+  border-radius: 20px;
 }
 .aqua-desc {
   height: 100px;
@@ -368,13 +384,46 @@ button {
 }
 .aquariums {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
+.add-comment {
+  margin-bottom: 20px;
+}
+
+.comment-modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 16px;
+  left: 15%;
+  top: 30%;
+  box-sizing: border-box;
+  transition: all 1s ease-out;
+}
+
+.profile-top {
+  margin: 20px 20% 20px 20%;
+  border-radius: 20px;
+}
+
+.profile-about {
+  margin: 0 15%;
+  border-radius: 20px;
+  padding: 0 15px;
+}
+
+a:hover {
+  color: rgb(81, 223, 81);
+}
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
   }
 
   .hide-sm {

@@ -31,7 +31,7 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
   );
 
   const guestLinks = (
-    <>
+    <span>
       <li className='nav-item'>
         <Link className='nav-link' to='/register'>
           Register
@@ -43,7 +43,7 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
           Login
         </Link>
       </li>
-    </>
+    </span>
   );
 
   return (

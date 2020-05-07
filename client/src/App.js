@@ -7,9 +7,11 @@ import Navbar from "./components/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import NotFound from "./components/layout/NotFound";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
+import Profile from "./components/profile/Profile";
 import Aquariums from "./components/aquariums/Aquariums";
 import AquaForm from "./components/aquariums/AquaForm";
 
@@ -50,9 +52,11 @@ const App = () => {
               component={CreateProfile}
             />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+            <PrivateRoute exact path='/profile/:id' component={Profile} />
             <PrivateRoute exact path='/aquariums' component={Aquariums} />
             <PrivateRoute exact path='/aquarium/:id' component={Aquarium} />
             <PrivateRoute exact path='/addaquarium' component={AquaForm} />
+            <Route component={NotFound} />
           </Switch>
         </>
       </Router>
