@@ -6,18 +6,38 @@ import { getAquarium } from "../../actions/aquariums";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 
-const Aquarium = ({ getAquarium, aquariums: { aquarium, loading }, match }) => {
+const Aquarium = ({
+  getAquarium,
+  aquariums: { aquarium, loading },
+  comment,
+  match,
+}) => {
   const [addComment, toggleAddComment] = useState(false);
 
   useEffect(() => {
     getAquarium(match.params.id);
   }, [getAquarium]);
+
+  const rating = comment;
+  console.log(rating);
+
+  const starPercentage = (rating / 5) * 100;
+  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+  console.log(starPercentageRounded);
+
   return loading || aquarium === null ? (
     <Spinner />
   ) : (
     <div className='container'>
       <img className='aquarium-photo' src={aquarium.photo} />
       <h2 className='text-primary'>{aquarium.name}</h2>
+      <div className='stars-outer'>
+        <div
+          className='stars-inner'
+          style={{ width: `${starPercentageRounded}` }}
+        ></div>
+      </div>
       <h6 className='text-dark'>{aquarium.location}</h6>
       <p>{aquarium.description}</p>
       <hr />
@@ -50,6 +70,7 @@ const Aquarium = ({ getAquarium, aquariums: { aquarium, loading }, match }) => {
 Aquarium.propTypes = {
   getAquarium: PropTypes.func.isRequired,
   aquariums: PropTypes.object.isRequired,
+  comment: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

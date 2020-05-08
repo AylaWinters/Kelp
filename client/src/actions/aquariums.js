@@ -8,6 +8,7 @@ import {
   ADD_AQUARIUM,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  UPDATE_COMMENT_LIKES,
 } from "./types";
 
 // Get aquariums
@@ -152,6 +153,40 @@ export const deleteComment = (aquaId, commentId, history) => async (
     dispatch({
       type: AQUARIUM_ERROR,
       payload: { msg: err.response, status: err.response },
+    });
+  }
+};
+
+// add like to comments
+export const addCommentLike = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/aquariums/comments/like/${id}`);
+
+    dispatch({
+      type: UPDATE_COMMENT_LIKES,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: AQUARIUM_ERROR,
+      payload: { msg: err.response },
+    });
+  }
+};
+
+// remove like from comments
+export const removeCommentLike = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/aquariums/comments/unlike/${id}`);
+
+    dispatch({
+      type: UPDATE_COMMENT_LIKES,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: AQUARIUM_ERROR,
+      payload: { msg: err.response },
     });
   }
 };

@@ -179,6 +179,7 @@ router.post(
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
+        rating: req.body.rating,
       };
 
       aquarium.comments.unshift(newComment);
@@ -225,6 +226,65 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
     await aquarium.save();
 
     res.json(aquarium.comments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUT api/aquarium/comments/like/:id
+// @desc    Like an Aquarium
+// @access  Private
+router.put("/comments/like/:id", auth, async (req, res) => {
+  try {
+    const aquarium = await Aquarium.findById(req.params.id);
+
+    // check if aquarium has already been liked
+    if (
+      aquarium.comments.likes.filter(
+        (like) => like.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: "Comment already liked" });
+    }
+
+    aquarium.comments.likes.unshift({ user: req.user.id });
+
+    await aquarium.save();
+
+    res.json(aquarium.comments.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   PUT api/posts/comments/unlike/:id
+// @desc    Like a post
+// @access  Private
+router.put("/comments/unlike/:id", auth, async (req, res) => {
+  try {
+    const aquarium = await Aquarium.findById(req.params.id);
+
+    // check if aquarium has already been liked
+    if (
+      aquarium.comments.likes.filter(
+        (like) => like.user.toString() === req.user.id
+      ).length === 0
+    ) {
+      return res.status(400).json({ msg: "Comment has not been liked" });
+    }
+
+    //get remove index
+    const removeIndex = aquarium.comments.likes
+      .map((like) => like.user.toString())
+      .indexOf(req.user.id);
+
+    aquarium.comments.likes.splice(removeIndex, 1);
+
+    await aquarium.save();
+
+    res.json(aquarium.comments.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

@@ -420,6 +420,36 @@ button {
 a:hover {
   color: rgb(81, 223, 81);
 }
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.stars-inner::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  color: #f8ce0b;
+  font-weight: 900;
+  font-size: 40px;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {

@@ -26,7 +26,7 @@ const AquaItem = ({
         type='button'
         className='btn btn-light'
       >
-        <i className='fas fa-thumbs-up'></i>{" "}
+        <i className='fas fa-chevron-up'></i>{" "}
         {likes.length > 0 && <span>{likes.length}</span>}
       </button>
       <button
@@ -34,10 +34,10 @@ const AquaItem = ({
         type='button'
         className='btn btn-light'
       >
-        <i className='fas fa-thumbs-down'></i>
+        <i className='fas fa-chevron-down'></i>
       </button>
       <Link to={`/aquarium/${_id}`} className='btn btn-primary'>
-        Discussion{" "}
+        Reviews{" "}
         {comments.length > 0 && (
           <span className='comment-count'>{comments.length}</span>
         )}

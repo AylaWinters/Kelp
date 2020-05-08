@@ -5,6 +5,7 @@ import { addComment } from "../../actions/aquariums";
 
 const CommentForm = ({ aquaId, addComment, toggle }) => {
   const [text, setText] = useState("");
+  const [rating, setRating] = useState("");
 
   return (
     <div className='comment-form'>
@@ -15,11 +16,35 @@ const CommentForm = ({ aquaId, addComment, toggle }) => {
         className='form my-1'
         onSubmit={(e) => {
           e.preventDefault();
-          addComment(aquaId, { text });
+          addComment(aquaId, { text, rating });
           setText("");
           toggle();
         }}
       >
+        <select
+          id='rating'
+          name='rating'
+          required
+          onChange={(e) => setRating(e.target.value)}
+        >
+          <option value=''>Rating:</option>
+          <option value={1}>1 Fishy</option>
+          <option value='2'>2 Fishies</option>
+          <option value='3'>3 Fishies</option>
+          <option value='4'>4 Fishies</option>
+          <option value={5}>5 Fishies</option>
+        </select>
+
+        {/* <textarea
+          name='rating'
+          cols='1'
+          rows='1'
+          placeholder='Rating'
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+          required
+        ></textarea> */}
+
         <textarea
           name='text'
           cols='30'

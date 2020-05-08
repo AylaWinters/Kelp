@@ -6,6 +6,7 @@ import {
   ADD_AQUARIUM,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  UPDATE_COMMENT_LIKES,
 } from "../actions/types";
 
 const initialState = {
@@ -65,6 +66,14 @@ export default function (state = initialState, action) {
             (comment) => comment._id !== payload
           ),
         },
+        loading: false,
+      };
+    case UPDATE_COMMENT_LIKES:
+      return {
+        ...state,
+        aquariums: state.aquariums.comments.map((aqua) =>
+          aqua._id === payload.id ? { ...aqua, likes: payload.likes } : aqua
+        ),
         loading: false,
       };
     default:

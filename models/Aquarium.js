@@ -37,6 +37,9 @@ const AquariumSchema = new Schema({
         type: String,
         required: true,
       },
+      rating: {
+        type: Number,
+      },
       name: {
         type: String,
       },
@@ -47,6 +50,14 @@ const AquariumSchema = new Schema({
         type: Date,
         default: Date.now,
       },
+      likes: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "users",
+          },
+        },
+      ],
     },
   ],
   date: {
