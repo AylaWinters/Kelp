@@ -9,7 +9,7 @@ import CommentItem from "./CommentItem";
 const Aquarium = ({
   getAquarium,
   aquariums: { aquarium, loading },
-  comment,
+  // comments,
   match,
 }) => {
   const [addComment, toggleAddComment] = useState(false);
@@ -18,8 +18,9 @@ const Aquarium = ({
     getAquarium(match.params.id);
   }, [getAquarium]);
 
-  const rating = comment;
+  const rating = 3; // <---------------------
   console.log(rating);
+  console.log(aquarium.comments);
 
   const starPercentage = (rating / 5) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
