@@ -28,14 +28,14 @@ const CommentItem = ({
           <h4 className='text-primary'>{name}</h4>
         </Link>
       </div>
-      <div>
+      <div className='post-content'>
         <div className='fish-outer'>
           <div className='fish-inner' style={{ width: `${rounded}` }}>
             {rounded}
           </div>
         </div>
         <div>
-          <p className='my-1'>{text}</p>
+          <p className='my-1 post-text'>{text}</p>
           <p className='post-date'>
             Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>{" "}
           </p>

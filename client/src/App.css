@@ -352,7 +352,10 @@ button {
 }
 
 .post-profile {
-  margin: auto auto;
+  margin-top: 10%;
+}
+.post-text {
+  padding-left: 20px;
 }
 
 .view-aqua {
@@ -486,7 +489,18 @@ a:hover {
   .container {
     /* margin-top: 8rem; */
   }
-
+  .post {
+    grid-gap: 0px;
+  }
+  .post-content {
+    text-align: center;
+  }
+  .post-text {
+    text-align: left;
+  }
+  .aquarium-photo {
+    height: 250px;
+  }
   .hide-sm {
     display: none !important;
   }
