@@ -37,7 +37,14 @@ const EditProfile = ({
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [loading]);
+  }, [
+    loading,
+    getCurrentProfile,
+    profile.bio,
+    profile.fishpersonality,
+    profile.location,
+    profile.social,
+  ]);
 
   const {
     location,

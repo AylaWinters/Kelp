@@ -327,7 +327,6 @@ button {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
-  align-items: center;
 }
 
 .post > div:first-child {
@@ -350,6 +349,10 @@ button {
   color: #aaa;
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
+}
+
+.post-profile {
+  margin: auto auto;
 }
 
 .view-aqua {
@@ -443,6 +446,34 @@ a:hover {
 }
 
 .stars-inner::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  color: #f8ce0b;
+  font-weight: 900;
+  font-size: 40px;
+}
+.fish-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.fish-outer::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.fish-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fish-inner::before {
   font-family: "Font Awesome 5 Free";
   content: "\f578 \f578 \f578 \f578 \f578";
   color: #f8ce0b;

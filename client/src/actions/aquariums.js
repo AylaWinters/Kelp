@@ -137,9 +137,7 @@ export const deleteComment = (aquaId, commentId, history) => async (
   dispatch
 ) => {
   try {
-    const res = await axios.delete(
-      `/api/aquariums/comment/${aquaId}/${commentId}`
-    );
+    await axios.delete(`/api/aquariums/comment/${aquaId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,

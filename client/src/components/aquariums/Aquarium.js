@@ -16,11 +16,11 @@ const Aquarium = ({
 
   useEffect(() => {
     getAquarium(match.params.id);
-  }, [getAquarium]);
+  }, [getAquarium, match.params.id]);
 
-  const rating = 3; // <---------------------
+  const rating = 4.5; // <---------------------
   console.log(rating);
-  console.log(aquarium.comments);
+  console.log(aquarium);
 
   const starPercentage = (rating / 5) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
@@ -31,7 +31,11 @@ const Aquarium = ({
     <Spinner />
   ) : (
     <div className='container'>
-      <img className='aquarium-photo' src={aquarium.photo} />
+      <img
+        className='aquarium-photo'
+        src={aquarium.photo}
+        alt='pic of aquarium'
+      />
       <h2 className='text-primary'>{aquarium.name}</h2>
       <div className='stars-outer'>
         <div
@@ -71,7 +75,7 @@ const Aquarium = ({
 Aquarium.propTypes = {
   getAquarium: PropTypes.func.isRequired,
   aquariums: PropTypes.object.isRequired,
-  comment: PropTypes.object.isRequired,
+  // comment: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
