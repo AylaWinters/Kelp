@@ -46,7 +46,7 @@ const AquaItem = ({
 );
 
 AquaItem.propTypes = {
-  aquariums: PropTypes.object.isRequired,
+  aquarium: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,

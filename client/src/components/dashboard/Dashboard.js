@@ -18,33 +18,35 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <div className='container'>
-      <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Welcome {user && user.name}
-      </p>
-      {profile !== null ? (
-        <>
-          <div class='dash-buttons'>
-            <Link to='/edit-profile' class='btn btn-light'>
-              <i class='fas fa-user-circle text-primary'></i> Edit Profile
+    <div className='dash-back'>
+      <div className='container'>
+        <h1 className='large text-primary'>Dashboard</h1>
+        <p className='lead'>
+          <i className='fas fa-user'></i> Welcome {user && user.name}
+        </p>
+        {profile !== null ? (
+          <>
+            <div className='dash-buttons'>
+              <Link to='/edit-profile' className='btn btn-light'>
+                <i className='fas fa-user-circle text-primary'></i> Edit Profile
+              </Link>
+              <Link to={`/profile/${user._id}`} className='btn btn-light'>
+                <i className='fas fa-user-circle text-primary'></i> View Profile
+              </Link>
+              <br />
+              <Link to='/aquariums' className='view-aqua btn btn-primary'>
+                <i className='fas fa-fish'></i> View Aquariums
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link to='/create-profile' className='btn btn-primary my-1'>
+              Create Profile
             </Link>
-            <Link to={`/profile/${user._id}`} class='btn btn-light'>
-              <i class='fas fa-user-circle text-primary'></i> View Profile
-            </Link>
-            <br />
-            <Link to='/aquariums' class='view-aqua btn btn-primary'>
-              <i class='fas fa-fish'></i> View Aquariums
-            </Link>
-          </div>
-        </>
-      ) : (
-        <>
-          <Link to='/create-profile' className='btn btn-primary my-1'>
-            Create Profile
-          </Link>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

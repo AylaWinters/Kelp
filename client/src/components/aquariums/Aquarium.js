@@ -18,13 +18,21 @@ const Aquarium = ({
     getAquarium(match.params.id);
   }, [getAquarium, match.params.id]);
 
-  const rating = 4.5; // <---------------------
-  console.log(rating);
-  console.log(aquarium);
+  if (aquarium) {
+    let overall = [];
+    if (aquarium.comments[0]) {
+      for (let i = 0; i < aquarium.comments.length; i++) {
+        overall.push(aquarium.comments[i].rating);
+      }
+      let total = overall.reduce((res, a) => {
+        return res + a;
+      });
+      var average = total / aquarium.comments.length;
+    }
+  }
 
-  const starPercentage = (rating / 5) * 100;
+  const starPercentage = (average / 5) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
-
   console.log(starPercentageRounded);
 
   return loading || aquarium === null ? (
@@ -37,12 +45,21 @@ const Aquarium = ({
         alt='pic of aquarium'
       />
       <h2 className='text-primary'>{aquarium.name}</h2>
-      <div className='stars-outer'>
-        <div
-          className='stars-inner'
-          style={{ width: `${starPercentageRounded}` }}
-        ></div>
-      </div>
+      {aquarium.comments[0] ? (
+        <div className='stars-outer'>
+          <div
+            className='stars-inner'
+            style={{ width: `${starPercentageRounded}` }}
+          ></div>
+        </div>
+      ) : (
+        <p
+          className='btn btn-primary add-comment'
+          onClick={() => toggleAddComment(!addComment)}
+        >
+          Be the First to Review!
+        </p>
+      )}
       <h6 className='text-dark'>{aquarium.location}</h6>
       <p>{aquarium.description}</p>
       <hr />

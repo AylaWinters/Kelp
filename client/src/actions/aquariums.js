@@ -40,7 +40,7 @@ export const getAquarium = (id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AQUARIUM_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: err.response, status: err.response },
     });
   }
 };

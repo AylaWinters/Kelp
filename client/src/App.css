@@ -364,6 +364,15 @@ button {
   padding-right: 77px;
 }
 
+.dash-back {
+  /* background: url(./img/kelp.jpg); */
+  min-height: 100vh;
+  min-width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+}
+
 .aqua-img {
   width: 300px;
   height: 250px;
@@ -492,6 +501,7 @@ a:hover {
   .post {
     grid-gap: 0px;
   }
+
   .post-content {
     text-align: center;
   }
@@ -499,7 +509,7 @@ a:hover {
     text-align: left;
   }
   .aquarium-photo {
-    height: 250px;
+    width: 80vw;
   }
   .hide-sm {
     display: none !important;
