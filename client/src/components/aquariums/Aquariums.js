@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getAquariums } from "../../actions/aquariums";
 import { connect } from "react-redux";
@@ -11,12 +11,32 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
     getAquariums();
   }, [getAquariums]);
 
+  const [searchText, setSearchText] = useState("");
+
+  let filteredAquariums = aquariums.filter((aqua) =>
+    aqua.name.toLowerCase().includes(searchText)
+  );
+
+  console.log(searchText);
+
+  // const aquaSearch = (e) => {
+  //   setSearchText = e.target.value;
+  //   console.log(e.target.value);
+  // };
+
   return loading ? (
     <Spinner />
   ) : (
     <>
       <div className='container'>
         <h1 className='large text-primary'>Aquariums</h1>
+        <input
+          type='text'
+          id='aqua-search'
+          // onChange={(e) => aquaSearch(e)}
+          onChange={(e) => setSearchText(e.target.value.toLowerCase())}
+          placeholder='Search for Aquariums..'
+        />
 
         <div className=''>
           <h4>Can't find your aquarium?</h4>
@@ -27,7 +47,7 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
         </div>
       </div>
       <div className='aquariums'>
-        {aquariums.map((aquarium) => (
+        {filteredAquariums.map((aquarium) => (
           <AquaItem key={aquarium._id} aquarium={aquarium} />
         ))}
       </div>

@@ -23,7 +23,7 @@ export const getAquariums = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AQUARIUM_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: err.response, status: err.response },
     });
   }
 };
@@ -144,7 +144,7 @@ export const deleteComment = (aquaId, commentId, history) => async (
       payload: commentId,
     });
 
-    history.push(`/aquariums/${aquaId}`);
+    history.push(`/aquarium/${aquaId}`);
 
     dispatch(setAlert("Comment Removed", "success"));
   } catch (err) {

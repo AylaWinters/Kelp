@@ -5,6 +5,7 @@ import Spinner from "../layout/Alert";
 import { getAquarium } from "../../actions/aquariums";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
+import GoogleMapsContainer from "./Map";
 
 const Aquarium = ({
   getAquarium,
@@ -33,7 +34,6 @@ const Aquarium = ({
 
   const starPercentage = (average / 5) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
-  console.log(starPercentageRounded);
 
   return loading || aquarium === null ? (
     <Spinner />
@@ -60,8 +60,10 @@ const Aquarium = ({
           Be the First to Review!
         </p>
       )}
+
       <h6 className='text-dark'>{aquarium.location}</h6>
       <p>{aquarium.description}</p>
+      {/* <GoogleMapsContainer /> */}
       <hr />
       <button
         onClick={() => toggleAddComment(!addComment)}

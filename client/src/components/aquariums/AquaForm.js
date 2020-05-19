@@ -50,9 +50,9 @@ const AquaForm = ({ addAquarium, history }) => {
         </div>
         <div className='form-group'>
           <input
-            type='file'
+            type='link' // file
             accept='image/*,.pdf,.jpg'
-            // placeholder='Link to Photo of Aquarium'
+            placeholder='Link to Photo of Aquarium'
             name='photo'
             value={photo}
             onChange={(e) => onChange(e)}
