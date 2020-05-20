@@ -29,14 +29,14 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
           onChange={(e) => setSearchText(e.target.value.toLowerCase())}
           placeholder='Search for Aquariums..'
         />
-        <label>
+        {/* <label>
           <input type='radio' name='name' value='name' />
           Name
         </label>
         <label>
           <input type='radio' name='city' value='city' />
           City
-        </label>
+        </label> */}
         <div className=''>
           <h4>Can't find your aquarium?</h4>
           <Link className='btn btn-primary' to='/addaquarium'>
