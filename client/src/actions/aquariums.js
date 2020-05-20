@@ -158,7 +158,7 @@ export const deleteComment = (aquaId, commentId, history) => async (
 // add like to comments
 export const addCommentLike = (id) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/aquariums/comments/like/${id}`);
+    const res = await axios.put(`/api/aquariums/comments/likes/${id}`);
 
     dispatch({
       type: UPDATE_COMMENT_LIKES,

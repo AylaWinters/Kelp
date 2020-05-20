@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import {
   deleteComment,
-  // addCommentLike,
-  // removeCommentLike,
+  addCommentLike,
+  removeCommentLike,
 } from "../../actions/aquariums";
 
 const CommentItem = ({
@@ -14,8 +14,8 @@ const CommentItem = ({
   comment: { _id, name, text, avatar, user, date, rating, likes },
   auth,
   deleteComment,
-  // addCommentLike,
-  // removeCommentLike,
+  addCommentLike,
+  removeCommentLike,
 }) => {
   const starPercent = (rating / 5) * 100;
   const rounded = `${Math.round(starPercent / 10) * 10}%`;
@@ -39,21 +39,21 @@ const CommentItem = ({
           <p className='post-date'>
             Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>{" "}
           </p>
-          {/* <button
-          onClick={(e) => addCommentLike(_id)}
-          type='button'
-          className='btn btn-light'
-        >
-          <i className='fas fa-chevron-up'></i>{" "}
-          {likes.length > 0 && <span>{likes.length}</span>}
-        </button>
-        <button
-          onClick={(e) => removeCommentLike(_id)}
-          type='button'
-          className='btn btn-light'
-        >
-          <i className='fas fa-chevron-down'></i>
-        </button> */}
+          <button
+            onClick={(e) => addCommentLike(_id)}
+            type='button'
+            className='btn btn-light'
+          >
+            <i className='fas fa-chevron-up'></i>{" "}
+            {likes.length > 0 && <span>{likes.length}</span>}
+          </button>
+          <button
+            onClick={(e) => removeCommentLike(_id)}
+            type='button'
+            className='btn btn-light'
+          >
+            <i className='fas fa-chevron-down'></i>
+          </button>
           {!auth.loading && user === auth.user._id && (
             <button
               onClick={(e) => deleteComment(aquaId, _id)}
@@ -74,12 +74,16 @@ CommentItem.propTypes = {
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   deleteComment: PropTypes.func.isRequired,
-  // addCommentLike: PropTypes.func.isRequired,
-  // removeCommentLike: PropTypes.func.isRequired,
+  addCommentLike: PropTypes.func.isRequired,
+  removeCommentLike: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { deleteComment })(CommentItem);
+export default connect(mapStateToProps, {
+  deleteComment,
+  addCommentLike,
+  removeCommentLike,
+})(CommentItem);

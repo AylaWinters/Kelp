@@ -17,13 +17,6 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
     aqua.name.toLowerCase().includes(searchText)
   );
 
-  console.log(searchText);
-
-  // const aquaSearch = (e) => {
-  //   setSearchText = e.target.value;
-  //   console.log(e.target.value);
-  // };
-
   return loading ? (
     <Spinner />
   ) : (
@@ -33,11 +26,17 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
         <input
           type='text'
           id='aqua-search'
-          // onChange={(e) => aquaSearch(e)}
           onChange={(e) => setSearchText(e.target.value.toLowerCase())}
           placeholder='Search for Aquariums..'
         />
-
+        <label>
+          <input type='radio' name='name' value='name' />
+          Name
+        </label>
+        <label>
+          <input type='radio' name='city' value='city' />
+          City
+        </label>
         <div className=''>
           <h4>Can't find your aquarium?</h4>
           <Link className='btn btn-primary' to='/addaquarium'>

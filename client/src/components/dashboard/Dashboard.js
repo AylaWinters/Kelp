@@ -9,7 +9,6 @@ const Dashboard = ({
   getCurrentProfile,
   auth: { user, id },
   profile: { profile, loading },
-  aquarium,
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -55,7 +54,6 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  aquarium: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
