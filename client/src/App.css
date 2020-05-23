@@ -373,6 +373,18 @@ button {
   position: fixed;
 }
 
+.dash-dia {
+  /* margin-top: 30px; */
+  height: 400px;
+  transform: skewY(-20deg);
+  z-index: 2;
+  background: url(./assets/photos/animals-fishes-koi-fishes-school-of-fish-thumb.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .aqua-img {
   width: 300px;
   height: 250px;
@@ -433,7 +445,7 @@ button {
 }
 
 a:hover {
-  color: rgb(81, 223, 81);
+  color: rgb(137, 196, 252);
 }
 
 .stars-outer {
@@ -559,12 +571,6 @@ a:hover {
 
   .profile-about .skills {
     flex-direction: column;
-  }
-
-  .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
   }
 
   .post {
