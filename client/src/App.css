@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #027002;
+  --primary-color: #0672ee;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -48,7 +48,7 @@ ul {
 }
 .highlights {
   padding-top: 20px;
-  color: rgb(2, 112, 2);
+  color: var(--primary-color);
   font-weight: 700;
 }
 .HLIcons {
@@ -57,11 +57,15 @@ ul {
 }
 .HLTitle {
   font-weight: 900;
-  color: rgb(2, 112, 2);
+  color: var(--primary-color);
 }
 .HLTitle:hover {
-  color: rgb(2, 112, 2);
+  color: rgb(158, 204, 246);
   text-decoration: underline;
+}
+
+a:hover {
+  color: rgb(158, 204, 246);
 }
 
 /* Utilities */
@@ -442,10 +446,6 @@ button {
   margin: 0 15%;
   border-radius: 20px;
   padding: 0 15px;
-}
-
-a:hover {
-  color: rgb(137, 196, 252);
 }
 
 .stars-outer {
