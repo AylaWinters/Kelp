@@ -15,7 +15,7 @@ function Carousel() {
             alt='First slide'
           />
         </div>
-        <div class='carousel-item active'>
+        <div class='carousel-item'>
           <img
             class='d-block w-100'
             src='https://i.imgur.com/JPTz6Yw.gif'
