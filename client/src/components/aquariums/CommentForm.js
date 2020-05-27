@@ -4,54 +4,58 @@ import { connect } from "react-redux";
 import { addComment } from "../../actions/aquariums";
 
 const CommentForm = ({ aquaId, addComment, toggle }) => {
-  const [text, setText] = useState("");
-  const [rating, setRating] = useState("");
+  const [formData, setFormData] = useState({
+    rating: "",
+    title: "",
+    text: "",
+  });
+
+  const { rating, title, text } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    addComment(aquaId, formData);
+    toggle();
+  };
 
   return (
     <div className='comment-form'>
       <div className='bg-primary p'>
         <h3>Write a Review</h3>
       </div>
-      <form
-        className='form my-1'
-        onSubmit={(e) => {
-          e.preventDefault();
-          addComment(aquaId, { text, rating });
-          setText("");
-          toggle();
-        }}
-      >
+      <form className='form my-1' onSubmit={(e) => onSubmit(e)}>
         <select
           id='rating'
           name='rating'
           required
-          onChange={(e) => setRating(e.target.value)}
+          onChange={(e) => onChange(e)}
         >
           <option value=''>Rating:</option>
-          <option value={1}>1 Fishy</option>
+          <option value='1'>1 Fishy</option>
           <option value='2'>2 Fishies</option>
           <option value='3'>3 Fishies</option>
           <option value='4'>4 Fishies</option>
-          <option value={5}>5 Fishies</option>
+          <option value='5'>5 Fishies</option>
         </select>
 
-        {/* <textarea
-          name='rating'
-          cols='1'
+        <textarea
+          name='title'
           rows='1'
-          placeholder='Rating'
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
+          placeholder='Title for Review'
+          value={title}
+          onChange={(e) => onChange(e)}
           required
-        ></textarea> */}
-
+        ></textarea>
         <textarea
           name='text'
           cols='30'
           rows='5'
           placeholder='Loved it? Hated it? Let the world know!'
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => onChange(e)}
           required
         ></textarea>
         <input type='submit' className='btn btn-dark my-1' value='Submit' />

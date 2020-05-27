@@ -11,7 +11,7 @@ import {
 
 const CommentItem = ({
   aquaId,
-  comment: { _id, name, text, avatar, user, date, rating, likes },
+  comment: { _id, name, title, text, avatar, user, date, rating, likes },
   auth,
   deleteComment,
   addCommentLike,
@@ -35,7 +35,11 @@ const CommentItem = ({
           </div>
         </div>
         <div>
-          <p className='my-1 post-text'>{text}</p>
+          <h5>
+            <p className='post-text'>{title}</p>
+          </h5>
+          <hr />
+          <p className='post-text'>{text}</p>
           <p className='post-date'>
             Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>{" "}
           </p>

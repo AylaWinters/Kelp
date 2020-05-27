@@ -14,7 +14,7 @@ const AquaItem = ({
     <div>
       <Link to={`/aquarium/${_id}`}>
         <img className='aqua-img' src={photo} alt='Pic of aquarium' />
-        <h4 className='text-primary'>{name}</h4>
+        <h4 className='text-primary aqua-name'>{name}</h4>
       </Link>
     </div>
     <div>

@@ -10,9 +10,11 @@ const AquaForm = ({ addAquarium, history }) => {
     location: "",
     photo: "",
     description: "",
+    phone: "",
+    website: "",
   });
 
-  const { name, location, photo, description } = formData;
+  const { name, location, photo, description, phone, website } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,15 +39,37 @@ const AquaForm = ({ addAquarium, history }) => {
             name='name'
             value={name}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Location of Aquarium'
+            placeholder='Address of Aquarium'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Website'
+            name='website'
+            value={website}
+            onChange={(e) => onChange(e)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Phone Number'
+            name='phone'
+            value={phone}
+            onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div className='form-group'>
@@ -56,6 +80,7 @@ const AquaForm = ({ addAquarium, history }) => {
             name='photo'
             value={photo}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div className='form-group'>
@@ -65,6 +90,7 @@ const AquaForm = ({ addAquarium, history }) => {
             name='description'
             value={description}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <input type='submit' className='btn btn-primary my-1' />

@@ -44,7 +44,11 @@ const Aquarium = ({
         src={aquarium.photo}
         alt='pic of aquarium'
       />
-      <h2 className='text-primary'>{aquarium.name}</h2>
+      <h2>
+        <a className='text-primary' href={aquarium.website}>
+          {aquarium.name}
+        </a>
+      </h2>
       {aquarium.comments[0] ? (
         <div className='stars-outer'>
           <div
@@ -61,7 +65,13 @@ const Aquarium = ({
         </p>
       )}
 
-      <h6 className='text-dark'>{aquarium.location}</h6>
+      <h5 className='text-dark'>{aquarium.phone}</h5>
+      <h5>
+        <a className='text-primary' href={aquarium.website}>
+          {aquarium.website}
+        </a>
+      </h5>
+      <h5 className='text-dark'>{aquarium.location}</h5>
       <p>{aquarium.description}</p>
       {/* <GoogleMapsContainer /> */}
       <hr />

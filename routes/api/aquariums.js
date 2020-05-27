@@ -28,6 +28,8 @@ router.post(
         location: req.body.location,
         name: req.body.name,
         photo: req.body.photo,
+        website: req.body.website,
+        phone: req.body.phone,
       });
 
       const aquarium = await newAquarium.save();
@@ -180,6 +182,7 @@ router.post(
         avatar: user.avatar,
         user: req.user.id,
         rating: req.body.rating,
+        title: req.body.title,
       };
 
       aquarium.comments.unshift(newComment);

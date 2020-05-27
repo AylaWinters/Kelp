@@ -8,15 +8,24 @@ const AquariumSchema = new Schema({
   },
   description: {
     type: String,
+    required: true,
   },
   location: {
     type: String,
+    required: true,
   },
   name: {
     type: String,
     required: true,
   },
   photo: {
+    type: String,
+    required: true,
+  },
+  website: {
+    type: String,
+  },
+  phone: {
     type: String,
   },
   likes: [
@@ -36,6 +45,9 @@ const AquariumSchema = new Schema({
       text: {
         type: String,
         required: true,
+      },
+      title: {
+        type: String,
       },
       rating: {
         type: Number,

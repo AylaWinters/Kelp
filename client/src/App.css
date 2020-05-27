@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #0672ee;
+  --primary-color: #0673ef;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -382,7 +382,8 @@ button {
   height: 400px;
   transform: skewY(-20deg);
   z-index: 2;
-  background: url(./assets/photos/animals-fishes-koi-fishes-school-of-fish-thumb.jpg);
+  background: url("https://media.giphy.com/media/T7VilEdSPfyy4/giphy.gif");
+  /* background: url(./assets/photos/animals-fishes-koi-fishes-school-of-fish-thumb.jpg); */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -409,8 +410,13 @@ button {
   margin: 20px;
   border-radius: 20px;
 }
+.aqua-name {
+  height: 28px;
+  overflow: hidden;
+}
 .aqua-desc {
   height: 100px;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 .aquariums {
