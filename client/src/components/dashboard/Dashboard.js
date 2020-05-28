@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/Spinner";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -14,11 +16,15 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  AOS.init({
+    duration: 2000,
+  });
+
   return loading && profile === null ? (
     <Spinner />
   ) : (
     <div className='dash-back'>
-      <div className='container'>
+      <div className='container' data-aos='fade-right'>
         <h1 className='large text-primary'>Dashboard</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Welcome {user && user.name}

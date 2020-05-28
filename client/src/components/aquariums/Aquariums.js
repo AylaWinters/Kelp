@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import AquaItem from "./AquaItem";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
   useEffect(() => {
@@ -17,11 +19,15 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
     aqua.name.toLowerCase().includes(searchText)
   );
 
+  AOS.init({
+    duration: 2000,
+  });
+
   return loading ? (
     <Spinner />
   ) : (
     <>
-      <div className='container'>
+      <div className='container' data-aos='fade-right'>
         <h1 className='large text-primary'>Aquariums</h1>
         <input
           type='text'
@@ -45,7 +51,7 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
           <br />
         </div>
       </div>
-      <div className='aquariums'>
+      <div className='aquariums' data-aos='fade-up'>
         {filteredAquariums.map((aquarium) => (
           <AquaItem key={aquarium._id} aquarium={aquarium} />
         ))}

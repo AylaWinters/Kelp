@@ -10,7 +10,7 @@ const AquaItem = ({
   auth,
   aquarium: { _id, description, name, photo, user, likes, comments, date },
 }) => (
-  <div className='aquaItem bg-white p-1'>
+  <div className='aquaItem bg-white p-1' data-aos='fade-up'>
     <div>
       <Link to={`/aquarium/${_id}`}>
         <img className='aqua-img' src={photo} alt='Pic of aquarium' />
