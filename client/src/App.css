@@ -589,6 +589,9 @@ button {
 
 /* Mobile Styles */
 @media (max-width: 700px) {
+  .hero {
+    background-size: unset;
+  }
   .hero-text {
     left: 15%;
   }
