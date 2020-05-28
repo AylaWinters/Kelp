@@ -592,6 +592,7 @@ button {
   .hero {
     background-size: unset;
     background-attachment: unset;
+    background-position: unset;
   }
   .hero-text {
     left: 15%;
