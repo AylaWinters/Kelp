@@ -591,6 +591,7 @@ button {
 @media (max-width: 700px) {
   .hero {
     background-size: unset;
+    background-attachment: unset;
   }
   .hero-text {
     left: 15%;
