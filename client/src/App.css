@@ -365,7 +365,7 @@ button {
 .hero {
   background: url(./assets/photos/Synchiropus_splendidus_2_Luc_Viatour.jpg);
   height: 100vh;
-  top: 100px;
+  /* top: 100px; */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -590,9 +590,11 @@ button {
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hero {
-    background-size: unset;
+    margin-top: -110px;
+    margin-bottom: -70px;
+    background-size: 700px;
     background-attachment: unset;
-    background-position: unset;
+    background-position: center;
   }
   .hero-text {
     left: 15%;
