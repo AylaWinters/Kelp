@@ -8,9 +8,10 @@ const CommentForm = ({ aquaId, addComment, toggle }) => {
     rating: "",
     title: "",
     text: "",
+    visit: "",
   });
 
-  const { rating, title, text } = formData;
+  const { rating, title, text, visit } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +41,14 @@ const CommentForm = ({ aquaId, addComment, toggle }) => {
           <option value='4'>4 Fishies</option>
           <option value='5'>5 Fishies</option>
         </select>
-
+        <input
+          type='date'
+          placeholder='Date of experience'
+          name='visit'
+          value={visit}
+          onChange={(e) => onChange(e)}
+          required
+        ></input>
         <textarea
           name='title'
           rows='1'

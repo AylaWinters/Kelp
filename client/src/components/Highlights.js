@@ -3,38 +3,38 @@ import { Link } from "react-router-dom";
 
 function Highlights() {
   return (
-    <div class='highlights container'>
-      <div class='row'>
-        <div class='col-sm center'>
-          <i class='HLIcons fas fa-fish'></i>
+    <div className='highlights container'>
+      <div className='row'>
+        <div className='col-sm center'>
+          <i className='HLIcons fas fa-fish'></i>
           <Link to='/aquariums'>
-            <h3 class='HLTitle'>Rate an Aquarium</h3>
+            <h3 className='HLTitle'>Rate an Aquarium</h3>
           </Link>
-          <p class='HLText'>
+          <p className='HLText'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
             assumenda expedita tempora sit odio. Excepturi sit itaque hic
             incidunt perferendis nisi earum perspiciatis in illum quidem ipsa,
             molestiae iusto repudiandae.
           </p>
         </div>
-        <div class='col-sm center'>
-          <i class='HLIcons fas fa-frog'></i>
+        <div className='col-sm center'>
+          <i className='HLIcons fas fa-frog'></i>
           <Link to='/aquariums'>
-            <h3 class='HLTitle'>Discover an Aquarium</h3>
+            <h3 className='HLTitle'>Discover an Aquarium</h3>
           </Link>
-          <p class='HLText'>
+          <p className='HLText'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
             assumenda expedita tempora sit odio. Excepturi sit itaque hic
             incidunt perferendis nisi earum perspiciatis in illum quidem ipsa,
             molestiae iusto repudiandae.
           </p>
         </div>
-        <div class='col-sm center'>
-          <i class='HLIcons fas fa-leaf'></i>
+        <div className='col-sm center'>
+          <i className='HLIcons fas fa-leaf'></i>
           <Link to='/register'>
-            <h3 class='HLTitle'>Create an Account</h3>
+            <h3 className='HLTitle'>Create an Account</h3>
           </Link>
-          <p class='HLText'>
+          <p className='HLText'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
             assumenda expedita tempora sit odio. Excepturi sit itaque hic
             incidunt perferendis nisi earum perspiciatis in illum quidem ipsa,

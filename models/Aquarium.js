@@ -58,6 +58,10 @@ const AquariumSchema = new Schema({
       avatar: {
         type: String,
       },
+      visit: {
+        type: Date,
+      },
+
       date: {
         type: Date,
         default: Date.now,

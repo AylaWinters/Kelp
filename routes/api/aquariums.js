@@ -183,6 +183,7 @@ router.post(
         user: req.user.id,
         rating: req.body.rating,
         title: req.body.title,
+        visit: req.body.visit,
       };
 
       aquarium.comments.unshift(newComment);
