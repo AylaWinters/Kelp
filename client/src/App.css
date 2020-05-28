@@ -450,7 +450,7 @@ button {
   min-width: 100vw;
   background-repeat: no-repeat;
   background-size: cover;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .dash-dia {
@@ -597,32 +597,37 @@ button {
     background-position: center;
   }
   .hero-text {
-    left: 15%;
+    left: 12%;
+    width: 275px;
   }
   .diagonal-one {
     margin-top: 350px;
   }
   .diagonal-one,
-  .diagonal-two {
+  .diagonal-two,
+  .dash-dia {
     background-size: 700px;
     background-attachment: unset;
     background-position: center;
   }
   .rate {
-    margin-left: 15%;
+    margin-left: 12%;
     margin-top: 40px;
     width: 300px;
   }
   .discover {
-    margin-right: 15%;
+    margin-right: 12%;
     width: 300px;
   }
   .create {
-    margin-left: 20px;
+    margin-left: 12%;
     width: 300px;
   }
   .container {
-    /* margin-top: 8rem; */
+    margin-top: 20px;
+  }
+  .dash-dia {
+    margin-top: 90px;
   }
   .post {
     grid-gap: 0px;
