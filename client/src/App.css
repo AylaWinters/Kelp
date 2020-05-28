@@ -361,6 +361,82 @@ button {
 .post-text {
   padding-left: 20px;
 }
+/* ==================================================== */
+.hero {
+  background: url(./assets/photos/Synchiropus_splendidus_2_Luc_Viatour.jpg);
+  height: 100vh;
+  top: 100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero-text {
+  position: absolute;
+  text-align: center;
+  left: 35%;
+  top: 40%;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0 0 15px black;
+}
+.hero-subtext {
+  font-size: 25px;
+}
+
+.rate {
+  color: var(--primary-color);
+  float: left;
+  width: 400px;
+  margin-left: 100px;
+  margin-top: 75px;
+}
+
+.diagonal-one {
+  margin-top: 320px;
+  height: 400px;
+  transform: skewY(-11deg);
+  z-index: 2;
+  background: url(https://media.giphy.com/media/LStvOWzroepMwQFTQ1/giphy.gif);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.discover {
+  color: var(--primary-color);
+  float: right;
+  width: 400px;
+  margin: 40px 200px 50px 0;
+  /* margin-right: 5%; */
+}
+
+.diagonal-two {
+  margin-top: 350px;
+  height: 400px;
+  transform: skewY(11deg);
+  z-index: 2;
+  background: url(https://media.giphy.com/media/l1BgR4kRDTTAvGwWk/giphy.gif);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.create {
+  color: var(--primary-color);
+  float: left;
+  width: 400px;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.HLText {
+  text-align: justify;
+  color: black;
+}
 
 .view-aqua {
   margin-top: 12px;
@@ -513,6 +589,25 @@ button {
 
 /* Mobile Styles */
 @media (max-width: 700px) {
+  .hero-text {
+    left: 15%;
+  }
+  .diagonal-one {
+    margin-top: 350px;
+  }
+  .rate {
+    margin-left: 15%;
+    margin-top: 40px;
+    width: 300px;
+  }
+  .discover {
+    margin-right: 15%;
+    width: 300px;
+  }
+  .create {
+    margin-left: 20px;
+    width: 300px;
+  }
   .container {
     /* margin-top: 8rem; */
   }

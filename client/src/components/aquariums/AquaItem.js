@@ -20,7 +20,7 @@ const AquaItem = ({
     <div>
       <p className='aqua-desc my-1'>{description}</p>
 
-      <button
+      {/* <button
         onClick={(e) => addLike(_id)}
         type='button'
         className='btn btn-light'
@@ -34,11 +34,12 @@ const AquaItem = ({
         className='btn btn-light'
       >
         <i className='fas fa-chevron-down'></i>
-      </button>
+      </button> */}
+
       <Link to={`/aquarium/${_id}`} className='btn btn-primary'>
         Reviews{" "}
         {comments.length > 0 && (
-          <span className='comment-count'>{comments.length}</span>
+          <span className='comment-count'>({comments.length})</span>
         )}
       </Link>
     </div>
