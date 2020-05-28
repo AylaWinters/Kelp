@@ -591,7 +591,7 @@ button {
 @media (max-width: 700px) {
   .hero {
     margin-top: -110px;
-    margin-bottom: -70px;
+    margin-bottom: -40px;
     background-size: 700px;
     background-attachment: unset;
     background-position: center;
@@ -601,6 +601,12 @@ button {
   }
   .diagonal-one {
     margin-top: 350px;
+  }
+  .diagonal-one,
+  .diagonal-two {
+    background-size: 700px;
+    background-attachment: unset;
+    background-position: center;
   }
   .rate {
     margin-left: 15%;
