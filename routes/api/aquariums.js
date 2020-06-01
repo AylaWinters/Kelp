@@ -45,7 +45,7 @@ router.post(
 // @route   GET api/posts
 // @desc    Get all posts
 // @access  Private
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const aquarium = await Aquarium.find().sort({ date: -1 });
     res.json(aquarium);
@@ -58,7 +58,7 @@ router.get("/", auth, async (req, res) => {
 // @route   GET api/posts/:id
 // @desc    Get post by id
 // @access  Private
-router.get("/:id", auth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const aquarium = await Aquarium.findById(req.params.id);
 

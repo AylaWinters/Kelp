@@ -19,15 +19,27 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
     aqua.name.toLowerCase().includes(searchText)
   );
 
+  const radioValue = (e) => {
+    if (e.target.value === "name") {
+      filteredAquariums = aquariums.filter((aqua) =>
+        aqua.name.toLowerCase().includes(searchText)
+      );
+    } else {
+      filteredAquariums = aquariums.filter((aqua) =>
+        aqua.location.toLowerCase().includes(searchText)
+      );
+    }
+  };
+
   AOS.init({
-    duration: 2000,
+    duration: 500,
   });
 
   return loading ? (
     <Spinner />
   ) : (
     <>
-      <div className='container' data-aos='fade-right'>
+      <div className='container'>
         <h1 className='large text-primary'>Aquariums</h1>
         <input
           type='text'
@@ -35,14 +47,17 @@ const Aquariums = ({ getAquariums, aquariums: { aquariums, loading } }) => {
           onChange={(e) => setSearchText(e.target.value.toLowerCase())}
           placeholder='Search for Aquariums..'
         />
-        {/* <label>
-          <input type='radio' name='name' value='name' />
-          Name
-        </label>
-        <label>
-          <input type='radio' name='city' value='city' />
-          City
-        </label> */}
+        <form onChange={(e) => radioValue(e)}>
+          <label>
+            <input type='radio' name='radio' value='name' checked />
+            Name
+          </label>
+          {"  "}
+          <label>
+            <input type='radio' name='radio' value='location' />
+            Location
+          </label>
+        </form>
         <div className=''>
           <h4>Can't find your aquarium?</h4>
           <Link className='btn btn-primary' to='/addaquarium'>

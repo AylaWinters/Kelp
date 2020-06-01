@@ -7,11 +7,11 @@ import "aos/dist/aos.css";
 
 function Home() {
   AOS.init({
-    duration: 2000,
+    duration: 500,
   });
 
   return (
-    <div>
+    <div className='home-bg'>
       {/* <Carousel /> */}
       <div className='hero'></div>
       <div className='hero-text' data-aos='fade-up'>
@@ -32,7 +32,7 @@ function Home() {
         </p>
       </div>
 
-      <div class='diagonal-one'></div>
+      <div className='diagonal-one'></div>
 
       <div className='discover center' data-aos='fade-left'>
         <i className='HLIcons fas fa-frog'></i>

@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Alert";
 import { getAquarium } from "../../actions/aquariums";
 import CommentForm from "./CommentForm";
+import CommentLogin from "./CommentLogin";
 import CommentItem from "./CommentItem";
 import GoogleMapsContainer from "./Map";
 
 const Aquarium = ({
+  auth: { isAuthenticated },
   getAquarium,
   aquariums: { aquarium, loading },
   // comments,
@@ -82,10 +84,16 @@ const Aquarium = ({
         Add Review
       </button>
 
-      {addComment && (
+      {addComment && isAuthenticated ? (
         <div className='comment-modal'>
           <CommentForm toggle={toggleAddComment} aquaId={aquarium._id} />
         </div>
+      ) : addComment ? (
+        <div className='comment-modal'>
+          <CommentLogin toggle={toggleAddComment} />
+        </div>
+      ) : (
+        ""
       )}
       <div className='comments'>
         {aquarium.comments &&
@@ -104,11 +112,13 @@ const Aquarium = ({
 Aquarium.propTypes = {
   getAquarium: PropTypes.func.isRequired,
   aquariums: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   // comment: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   aquariums: state.aquariums,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { getAquarium })(Aquarium);

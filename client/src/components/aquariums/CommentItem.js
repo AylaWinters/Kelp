@@ -64,15 +64,18 @@ const CommentItem = ({
           >
             <i className='fas fa-chevron-down'></i>
           </button>
-          {!auth.loading && user === auth.user._id && (
-            <button
-              onClick={(e) => deleteComment(aquaId, _id)}
-              type='button'
-              className='btn btn-danger'
-            >
-              <i className='fas fa-times'></i>
-            </button>
-          )}
+          {auth.isAuthenticated
+            ? !auth.loading &&
+              user === auth.user._id && (
+                <button
+                  onClick={(e) => deleteComment(aquaId, _id)}
+                  type='button'
+                  className='btn btn-danger'
+                >
+                  <i className='fas fa-times'></i>
+                </button>
+              )
+            : ""}
         </div>
       </div>
     </div>

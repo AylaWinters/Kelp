@@ -53,8 +53,8 @@ const App = () => {
             />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
             <PrivateRoute exact path='/profile/:id' component={Profile} />
-            <PrivateRoute exact path='/aquariums' component={Aquariums} />
-            <PrivateRoute exact path='/aquarium/:id' component={Aquarium} />
+            <Route exact path='/aquariums' component={Aquariums} />
+            <Route exact path='/aquarium/:id' component={Aquarium} />
             <PrivateRoute exact path='/addaquarium' component={AquaForm} />
             <Route component={NotFound} />
           </Switch>

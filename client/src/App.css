@@ -362,6 +362,11 @@ button {
   padding-left: 20px;
 }
 /* ==================================================== */
+.home-bg {
+  background: rgb(154, 208, 252);
+  padding-bottom: 250px;
+}
+
 .hero {
   background: url(./assets/photos/Synchiropus_splendidus_2_Luc_Viatour.jpg);
   height: 100vh;
@@ -623,6 +628,10 @@ button {
   .create {
     margin-left: 12%;
     width: 300px;
+  }
+
+  .login-modal {
+    /* left: 5%; */
   }
   .container {
     margin-top: 20px;
