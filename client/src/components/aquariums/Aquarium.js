@@ -37,6 +37,11 @@ const Aquarium = ({
   const starPercentage = (average / 5) * 100;
   const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
 
+  if (aquarium) {
+    var newAddress = aquarium.location.replace(" ", "+");
+  }
+  // console.log(aquarium.location);
+
   return loading || aquarium === null ? (
     <Spinner />
   ) : (
@@ -51,6 +56,13 @@ const Aquarium = ({
           {aquarium.name}
         </a>
       </h2>
+      <iframe
+        className='map'
+        height='200'
+        width='200'
+        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBZOg2G9tv1dN0Zm8cJtSobffs_CIo4DBo
+    &q=${newAddress}`}
+      ></iframe>
       {aquarium.comments[0] ? (
         <div className='stars-outer'>
           <div
@@ -75,7 +87,7 @@ const Aquarium = ({
       </h5>
       <h5 className='text-dark'>{aquarium.location}</h5>
       <p>{aquarium.description}</p>
-      {/* <GoogleMapsContainer /> */}
+
       <hr />
       <button
         onClick={() => toggleAddComment(!addComment)}

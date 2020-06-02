@@ -32,15 +32,23 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 
   const guestLinks = (
     <span>
+      <li>
+        <Link to='/aquariums' className='nav-link'>
+          <i className='fas fa-fish'></i>{" "}
+          <span className='hide-sm'>Aquariums</span>
+        </Link>
+      </li>
       <li className='nav-item'>
         <Link className='nav-link' to='/register'>
-          Register
+          <i className='far fa-user-circle'></i>{" "}
+          <span className='hide-sm'>Register</span>
         </Link>
       </li>
 
       <li className='nav-item'>
         <Link className='nav-link' to='/login'>
-          Login
+          <i className='fas fa-sign-in-alt'></i>{" "}
+          <span className='hide-sm'>Login</span>
         </Link>
       </li>
     </span>

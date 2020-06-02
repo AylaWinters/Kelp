@@ -592,6 +592,11 @@ button {
   font-size: 40px;
 }
 
+.map {
+  float: right;
+  border-radius: 15px;
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hero {
