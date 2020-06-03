@@ -17,8 +17,10 @@ const Profile = ({
   }, [getProfileById, match.params.id]);
   return (
     <div>
-      {profile === null || loading ? (
+      {loading ? (
         <Spinner />
+      ) : profile === null ? (
+        <h2 className='container text-primary'>No Profile Found</h2>
       ) : (
         <>
           <br />
