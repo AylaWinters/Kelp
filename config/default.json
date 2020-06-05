@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://KelpWanted:KelpWanted@kelpwanted-8isxl.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken"
+}
