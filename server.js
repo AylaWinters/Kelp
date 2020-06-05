@@ -4,7 +4,6 @@ const path = require("path");
 
 const app = express();
 
-// Connect DB
 connectDB();
 
 // init Middleware

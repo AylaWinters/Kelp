@@ -24,8 +24,6 @@ const EditProfile = ({
   const [displaySocailInputs, toggleSocialInputs] = useState(false);
 
   useEffect(() => {
-    getCurrentProfile();
-
     setFormData({
       location: loading || !profile.location ? "" : profile.location,
       fishpersonality:
@@ -37,14 +35,8 @@ const EditProfile = ({
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [
-    loading,
-    getCurrentProfile,
-    profile.bio,
-    profile.fishpersonality,
-    profile.location,
-    profile.social,
-  ]);
+    getCurrentProfile();
+  }, []);
 
   const {
     location,
