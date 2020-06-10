@@ -36,7 +36,7 @@ const EditProfile = ({
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
 
   const {
     location,

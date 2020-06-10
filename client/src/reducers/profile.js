@@ -2,6 +2,16 @@ import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from "../actions/types";
 
 const initialState = {
   profile: null,
+  // {
+  //   location: "",
+  //   fishpersonality: "",
+  //   bio: "",
+  //   twitter: "",
+  //   facebook: "",
+  //   linkedin: "",
+  //   youtube: "",
+  //   instagram: "",
+  // },
   profiles: [],
   repos: [],
   loading: true,
