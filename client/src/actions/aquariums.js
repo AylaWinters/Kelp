@@ -87,7 +87,7 @@ export const addLike = (id) => async (dispatch) => {
   }
 };
 
-// remve like
+// remove like
 export const removeLike = (id) => async (dispatch) => {
   try {
     const res = await axios.put(`/api/aquariums/unlike/${id}`);
