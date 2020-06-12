@@ -69,6 +69,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case UPDATE_COMMENT_LIKES:
+      console.log("reducer hit", action);
       return {
         ...state,
         aquariums: state.aquariums.comments.map((aqua) =>

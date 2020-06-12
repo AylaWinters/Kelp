@@ -156,15 +156,18 @@ export const deleteComment = (aquaId, commentId, history) => async (
 };
 
 // add like to comments
-export const addCommentLike = (id) => async (dispatch) => {
+export const addCommentLike = (id, aquaId) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/aquariums/comments/likes/${id}`);
-
+    const res = await axios.put(
+      `/api/aquariums/${aquaId}/comments/${id}/likes`
+    );
+    console.log("action hit", res);
     dispatch({
       type: UPDATE_COMMENT_LIKES,
       payload: { id, likes: res.data },
     });
   } catch (err) {
+    console.log("action error", err);
     dispatch({
       type: AQUARIUM_ERROR,
       payload: { msg: err.response },
@@ -173,9 +176,11 @@ export const addCommentLike = (id) => async (dispatch) => {
 };
 
 // remove like from comments
-export const removeCommentLike = (id) => async (dispatch) => {
+export const removeCommentLike = (id, aquaId) => async (dispatch) => {
   try {
-    const res = await axios.put(`/api/aquariums/comments/unlike/${id}`);
+    const res = await axios.put(
+      `/api/aquariums/${aquaId}/comments/${id}/unlike`
+    );
 
     dispatch({
       type: UPDATE_COMMENT_LIKES,

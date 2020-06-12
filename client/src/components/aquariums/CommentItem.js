@@ -50,7 +50,7 @@ const CommentItem = ({
             Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>{" "}
           </p>
           <button
-            onClick={(e) => addCommentLike(_id)}
+            onClick={(e) => addCommentLike(_id, aquaId)}
             type='button'
             className='btn btn-light'
           >

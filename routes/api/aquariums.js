@@ -239,24 +239,25 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
 // @route   PUT api/aquarium/comments/like/:id
 // @desc    Like an Aquarium
 // @access  Private
-router.put("/comments/like/:id", auth, async (req, res) => {
+router.put("/:aquariumId/comments/:id/likes", auth, async (req, res) => {
   try {
-    const aquarium = await Aquarium.findById(req.params.id);
-
+    console.log("comment id", req.params);
+    const aquarium = await Aquarium.findById(req.params.aquariumId);
+    const comment = aquarium.comments.find((el) => el["_id"] == req.params.id);
+    console.log("comment", comment);
     // check if aquarium has already been liked
     if (
-      aquarium.comments.likes.filter(
-        (like) => like.user.toString() === req.user.id
-      ).length > 0
+      comment.likes.filter((like) => like.user.toString() === req.user.id)
+        .length > 0
     ) {
       return res.status(400).json({ msg: "Comment already liked" });
     }
 
-    aquarium.comments.likes.unshift({ user: req.user.id });
+    comment.likes.unshift({ user: req.user.id });
 
     await aquarium.save();
 
-    res.json(aquarium.comments.likes);
+    res.json(comment.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -266,29 +267,28 @@ router.put("/comments/like/:id", auth, async (req, res) => {
 // @route   PUT api/posts/comments/unlike/:id
 // @desc    Like a post
 // @access  Private
-router.put("/comments/unlike/:id", auth, async (req, res) => {
+router.put("/:aquariumId/comments/:id/unlike", auth, async (req, res) => {
   try {
-    const aquarium = await Aquarium.findById(req.params.id);
-
+    const aquarium = await Aquarium.findById(req.params.aquariumId);
+    const comment = aquarium.comments.find((el) => el._id == req.params.id);
     // check if aquarium has already been liked
     if (
-      aquarium.comments.likes.filter(
-        (like) => like.user.toString() === req.user.id
-      ).length === 0
+      comment.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
     ) {
       return res.status(400).json({ msg: "Comment has not been liked" });
     }
 
     //get remove index
-    const removeIndex = aquarium.comments.likes
+    const removeIndex = comment.likes
       .map((like) => like.user.toString())
       .indexOf(req.user.id);
 
-    aquarium.comments.likes.splice(removeIndex, 1);
+    comment.likes.splice(removeIndex, 1);
 
     await aquarium.save();
 
-    res.json(aquarium.comments.likes);
+    res.json(comment.likes);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
