@@ -51,41 +51,50 @@ const Aquarium = ({
         src={aquarium.photo}
         alt='pic of aquarium'
       />
-      <h2>
-        <a className='text-primary' href={aquarium.website}>
-          {aquarium.name}
-        </a>
-      </h2>
-      <iframe
-        className='map'
-        height='200'
-        width='200'
-        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBZOg2G9tv1dN0Zm8cJtSobffs_CIo4DBo
-    &q=${newAddress}`}
-      ></iframe>
-      {aquarium.comments[0] ? (
-        <div className='stars-outer'>
-          <div
-            className='stars-inner'
-            style={{ width: `${starPercentageRounded}` }}
-          ></div>
-        </div>
-      ) : (
-        <p
-          className='btn btn-primary add-comment'
-          onClick={() => toggleAddComment(!addComment)}
-        >
-          Be the First to Review!
-        </p>
-      )}
 
-      <h5 className='text-dark'>{aquarium.phone}</h5>
-      <h5>
-        <a className='text-primary' href={aquarium.website}>
-          {aquarium.website}
-        </a>
-      </h5>
-      <h5 className='text-dark'>{aquarium.location}</h5>
+      <div className='row mt-4'>
+        <div className='column ml-3'>
+          <h2>
+            <a className='text-primary' href={aquarium.website}>
+              {aquarium.name}
+            </a>
+          </h2>
+
+          {aquarium.comments[0] ? (
+            <div className='stars-outer'>
+              <div
+                className='stars-inner'
+                style={{ width: `${starPercentageRounded}` }}
+              ></div>
+            </div>
+          ) : (
+            <p
+              className='btn btn-primary add-comment'
+              onClick={() => toggleAddComment(!addComment)}
+            >
+              Be the First to Review!
+            </p>
+          )}
+
+          <h5 className='text-dark'>{aquarium.phone}</h5>
+          <h5>
+            <a className='text-primary' href={aquarium.website}>
+              {aquarium.website}
+            </a>
+          </h5>
+          <h5 className='text-dark'>{aquarium.location}</h5>
+        </div>
+        <div className='column ml-5'>
+          <iframe
+            className='map'
+            height='200'
+            width='200'
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBZOg2G9tv1dN0Zm8cJtSobffs_CIo4DBo
+    &q=${newAddress}`}
+          ></iframe>
+        </div>
+      </div>
+
       <p>{aquarium.description}</p>
 
       <hr />
@@ -109,13 +118,16 @@ const Aquarium = ({
       )}
       <div className='comments'>
         {aquarium.comments &&
-          aquarium.comments.map((comment) => (
-            <CommentItem
-              key={comment._id}
-              comment={comment}
-              aquaId={aquarium._id}
-            />
-          ))}
+          aquarium.comments
+            .sort((a, b) => console.log(a.likes.length, b.likes.length))
+            .map((comment) => (
+              <CommentItem
+                key={comment._id}
+                comment={comment}
+                aquaId={aquarium._id}
+              />
+            ))}
+        {console.log(aquarium.comments[1].likes.length)}
       </div>
     </div>
   );

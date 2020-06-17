@@ -273,9 +273,10 @@ router.put("/:aquariumId/comments/:id/unlike", auth, async (req, res) => {
     const comment = aquarium.comments.find((el) => el._id == req.params.id);
     // check if aquarium has already been liked
     if (
-      comment.likes.filter((like) => like.user.toString() === req.user.id)
+      comment.likes.filter((like) => like.user.toString() == req.user.id)
         .length === 0
     ) {
+      console.log(comment.likes);
       return res.status(400).json({ msg: "Comment has not been liked" });
     }
 

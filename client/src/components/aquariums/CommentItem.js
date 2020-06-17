@@ -58,7 +58,7 @@ const CommentItem = ({
             {likes.length > 0 && <span>{likes.length}</span>}
           </button>
           <button
-            onClick={(e) => removeCommentLike(_id)}
+            onClick={(e) => removeCommentLike(_id, aquaId)}
             type='button'
             className='btn btn-light'
           >

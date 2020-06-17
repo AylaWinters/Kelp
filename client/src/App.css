@@ -273,6 +273,9 @@ a:hover {
 .form input[type="email"],
 .form input[type="password"],
 .form input[type="date"],
+.form input[type="tel"],
+.form input[type="url"],
+.form input[type="link"],
 .form select,
 .form textarea {
   display: block;

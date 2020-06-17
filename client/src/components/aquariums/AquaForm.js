@@ -54,7 +54,7 @@ const AquaForm = ({ addAquarium, history }) => {
         </div>
         <div className='form-group'>
           <input
-            type='text'
+            type='url'
             placeholder='Website'
             name='website'
             value={website}
@@ -64,7 +64,8 @@ const AquaForm = ({ addAquarium, history }) => {
         </div>
         <div className='form-group'>
           <input
-            type='text'
+            type='tel'
+            size='100'
             placeholder='Phone Number'
             name='phone'
             value={phone}
@@ -84,8 +85,9 @@ const AquaForm = ({ addAquarium, history }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <textarea
             type='text'
+            rows='10'
             placeholder='Description of Aquarium'
             name='description'
             value={description}
